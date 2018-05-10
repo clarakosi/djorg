@@ -1,7 +1,8 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Bookmark
 
-class BookmarkForm(ModelForm):
+class BookmarkForm(forms.ModelForm):
+  """Form to create or edit bookmarks."""
   class Meta:
     model = Bookmark
-    fields = ['url', 'name', 'notes']
+    fields = ('url', 'name', 'notes')

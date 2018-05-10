@@ -1,11 +1,16 @@
-from django.forms import modelformset_factory
 from django.shortcuts import render
+from .forms import BookmarkForm
 from .models import Bookmark, PersonalBookmark
 
 
 
 # Create your views here.
 def index(request):
+  # import pdb; pdb.set_trace()
+  if request.method == 'POST':
+    form = BookmarkForm(request.POST)
+    if form.is_valid():
+      form.save()
   context = {}
   pb = PersonalBookmark.objects.values_list('id')
   context['bookmarks'] = Bookmark.objects.exclude(id__in=pb)
@@ -13,17 +18,7 @@ def index(request):
     context['personal_bookmarks'] = PersonalBookmark.objects.none()
   else:
     context['personal_bookmarks'] = PersonalBookmark.objects.filter(user = request.user)
+  
+  context['form'] = BookmarkForm()
 
   return render(request, 'bookmarks/index.html', context)
-
-def bookmark_model(request):
-  BookmarkFormSet = modelformset_factory(Bookmark, fields('url', 'name', 'notes'))
-  if request.method == 'POST':
-    formset = BookmarkFormSet(request.POST, request.FILES)
-    if formset.is_valid():
-      formset.save()
-
-      return index(request)
-  else:
-    formset = BookmarkFormSet()
-  return render(request, 'bookmarks/index.html', {'formset': formset})

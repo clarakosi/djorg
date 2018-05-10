@@ -1,3 +1,6 @@
+{% extends "djorg_base.html" %}
+{% block content %}
+{% load bootstrap4 %}
 <h1>Bookmarks</h1>
 
 {% if bookmarks %}
@@ -23,15 +26,5 @@
 <p>No personal bookmarks available - you should add some</p>
 {% endif %}
 
-<!-- <form action="/bookmarks/" method="post">
-  <label for="url">URL: </label>
-  <input id="url" type="text" name="url" value="{{ url }}">
-  <label for="name">Name: </label>
-  <input id="name" type="text" name="name" value="{{ name }}">
-  <label for="notes">Notes: </label>
-  <textarea id="notes" type="text" name="notes" value="{{ notes }}"></textarea>
-  <input type="submit" value="OK">
-</form> -->
-<form method="post">
-    {{ formset }}
-</form>
+{% include "bookmarks/form.html" %}
+{% endblock %}

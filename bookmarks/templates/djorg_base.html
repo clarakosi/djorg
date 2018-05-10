@@ -1,0 +1,26 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}Djorg{% endblock %}</title>
+    {# Load Bootstrap CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+  </head>
+  <body>
+    <div id="menu">
+      {% block menu %}
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/bookmarks">Bookmarks</a></li>
+        </li>
+      </ul>
+      {% endblock %}
+    </div>
+    <div id="content">
+      {% block content %}
+      <h1>Welcome to Djorg!</h1>
+      {% endblock%}
+    </div>
+  </body>
+</html>
