@@ -7,19 +7,34 @@
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
   </head>
-  <body>
+  <body style="height: 100vh; margin: auto">
     <div id="menu">
       {% block menu %}
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/bookmarks">Bookmarks</a></li>
-        </li>
-      </ul>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+          <a class="navbar-brand" href="#">Bookmarks</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link" href="/bookmarks/">Bookmarks</a>
+            </div>
+          </div>
+      </nav>
       {% endblock %}
     </div>
-    <div id="content">
+    <div id="content" >
       {% block content %}
-      <h1>Welcome to Djorg!</h1>
+      <div style="height: 100%; padding: 200px 0px">
+          <h1 class="display-4" style="text-align: center">Welcome to Djorg!</h1>
+          <br />
+          <br />
+          <br />
+          <p class="lead" style="display: flex; align-items: center; justify-content: center">
+            <a class="btn btn-primary btn-lg" href="/bookmarks/" role="button">Add Bookmarks</a>
+          </p>
+      </div>
       {% endblock%}
     </div>
   </body>

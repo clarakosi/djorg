@@ -1,6 +1,13 @@
 {% load bootstrap4 %}
 
 <h2>New Bookmark</h2>
+{% if messages %}
+  <div class="messages alert alert-danger" role="alert">
+      {% for message in messages %}
+      <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+      {% endfor %}
+  </div>
+{% endif %}
 <form method="POST" class="bookmark-form">
   {% csrf_token %}
   {% bootstrap_form form%}
