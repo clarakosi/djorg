@@ -1,6 +1,7 @@
 <h1>Bookmarks</h1>
 
 {% if bookmarks %}
+<h2>Public</h2>
 <ol>
   {%for bookmark in bookmarks %}
   <li><a href="{{ bookmark.url }}">{{ bookmark.name}}</a></li>
@@ -9,3 +10,28 @@
 {% else %}
 <p>No bookmarks available - you should add some</p>
 {% endif %}
+
+
+{% if personal_bookmarks %}
+<h2>Personal</h2>
+<ol>
+  {%for bookmark in personal_bookmarks %}
+  <li><a href="{{ bookmark.url }}">{{ bookmark.name}}</a></li>
+  {% endfor %}
+</ol>
+{% else %}
+<p>No personal bookmarks available - you should add some</p>
+{% endif %}
+
+<!-- <form action="/bookmarks/" method="post">
+  <label for="url">URL: </label>
+  <input id="url" type="text" name="url" value="{{ url }}">
+  <label for="name">Name: </label>
+  <input id="name" type="text" name="name" value="{{ name }}">
+  <label for="notes">Notes: </label>
+  <textarea id="notes" type="text" name="notes" value="{{ notes }}"></textarea>
+  <input type="submit" value="OK">
+</form> -->
+<form method="post">
+    {{ formset }}
+</form>
