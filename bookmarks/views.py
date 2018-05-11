@@ -45,3 +45,6 @@ def update_BookMark(request, bookmark_id):
   context = {}
   context['form'] == BookmarkForm(bookmark_to_update)
   return render(request, 'bookmarks/index.html', context)
+
+def redirect_Nav(request):
+  return HttpResponseRedirect('/')
