@@ -8,6 +8,15 @@
 <ol>
   {%for bookmark in bookmarks %}
   <li><a href="{{ bookmark.url }}">{{ bookmark.name}}</a></li>
+  <form method="POST">
+    {% csrf_token %}
+    <td><a href="/bookmarks/delete/{{ bookmark.id }}">Delete</a></td>
+  </form>
+  <form method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <td><a href="/bookmarks/update/{{ bookmark.id }}">Update</a></td>
+  </form>
   {% endfor %}
 </ol>
 {% else %}
@@ -20,6 +29,10 @@
 <ol>
   {%for bookmark in personal_bookmarks %}
   <li><a href="{{ bookmark.url }}">{{ bookmark.name}}</a></li>
+  <form method="POST">
+      {% csrf_token %}
+      <td><a href="/bookmarks/delete/{{ bookmark.id }}">Delete</a></td>
+  </form>
   {% endfor %}
 </ol>
 {% else %}

@@ -7,8 +7,3 @@ class BookmarkForm(forms.ModelForm):
     model = Bookmark
     fields = ('url', 'name', 'notes')
 
-
-class DeleteBookMarkForm(forms.ModelForm):
-  class Meta:
-    model = Bookmark
-    fields = []
