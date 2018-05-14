@@ -60,10 +60,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'djorg.urls'
 
+LOGIN_REDIRECT_URL = '/api'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./login'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,7 +100,7 @@ WSGI_APPLICATION = 'djorg.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
-    )
+    ),
 }
 
 

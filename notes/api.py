@@ -22,7 +22,7 @@ class NoteViewSet(viewsets.ModelViewSet):
 
   def get_queryset(self):
     user = self.request.user
-    if settings.DEBUG:
+    if user.is_superuser:
       return Note.objects.all()
     elif user.is_anonymous:
       return Note.objects.none()
