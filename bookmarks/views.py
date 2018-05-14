@@ -49,16 +49,16 @@ def update_BookMark(request, bookmark_id):
   context['form'] == BookmarkForm(bookmark_to_update)
   return render(request, 'bookmarks/index.html', context)
 
-def sign_up(request):
-  if request.method == 'POST':
-    form = UserCreationForm(request.POST)
-    if form.is_valid():
-      form.save()
-      username = form.cleaned_data.get('username')
-      user_password = form.cleaned_data.get('password1')
-      user = authenticate(username=username, password=user_password)
-      login(request, user)
-      return HttpResponseRedirect('/bookmarks')
-  else:
-    form = UserCreationForm()
-  return render(request, 'bookmarks/index.html', {'signup': form})
+# def sign_up(request):
+#   if request.method == 'POST':
+#     form = UserCreationForm(request.POST)
+#     if form.is_valid():
+#       form.save()
+#       username = form.cleaned_data.get('username')
+#       user_password = form.cleaned_data.get('password1')
+#       user = authenticate(username=username, password=user_password)
+#       login(request, user)
+#       return HttpResponseRedirect('/bookmarks')
+#   else:
+#     form = UserCreationForm()
+#   return render(request, 'bookmarks/index.html', {'signup': form})
