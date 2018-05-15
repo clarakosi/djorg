@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'graphene_django',
     'rest_framework',
     'notes',
 ]
@@ -84,6 +85,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
+}
+
+GRAPHENE = {
+    'SCHEMA': 'notes.schema.schema'
 }
 
 WSGI_APPLICATION = 'djorg.wsgi.application'
