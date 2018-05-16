@@ -1,3 +1,4 @@
 {
-  "python.pythonPath": "/Users/claraandrew/.local/share/virtualenvs/djorg-I1FD7vhr/bin/python"
+  "python.pythonPath": "/Users/claraandrew/.local/share/virtualenvs/djorg-I1FD7vhr/bin/python",
+  "git.ignoreLimitWarning": true
 }
