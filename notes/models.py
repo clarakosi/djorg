@@ -10,3 +10,4 @@ class Note(models.Model):
   content = models.TextField(blank=True)
   created_at = models.DateTimeField(auto_now=True)
   last_modified = models.DateTimeField(auto_now=True)
+

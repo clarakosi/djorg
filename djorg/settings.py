@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'corsheaders',
     'graphene_django',
     'rest_framework',
     'notes',
@@ -50,11 +51,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'graphql_jwt.middleware.JSONWebTokenMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -79,6 +82,11 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users
@@ -93,6 +101,11 @@ GRAPHENE = {
 
 WSGI_APPLICATION = 'djorg.wsgi.application'
 
+CORS_ORIGIN_WHITELIST = ('localhost:3000')
+
+CSRF_TRUSTED_ORIGINS = (
+    'localhost:3000',
+)
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

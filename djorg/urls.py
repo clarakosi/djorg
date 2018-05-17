@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
 from rest_framework import routers
 from notes.api import NoteViewSet
+
 
 router = routers.DefaultRouter()
 router.register(r'notes', NoteViewSet)
@@ -28,6 +30,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('bookmarks/', include('bookmarks.urls')),
-    path('graphql/', GraphQLView.as_view(graphiql=True)),
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
     path('accounts/', include('django.contrib.auth.urls'))
 ]
